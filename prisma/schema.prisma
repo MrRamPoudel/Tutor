@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://postgres:qazwsx123@localhost:5432/tutorsystemdb?schema=public"
+}
+
+model auth {
+  email    String  @unique(map: "email")
+  password String
+  student  student @relation(fields: [email], references: [email], onDelete: NoAction, onUpdate: NoAction, map: "fk_email")
+}
+
+model student {
+  fname String
+  lname String
+  sid   Int    @unique(map: "unique_sid")
+  email String @unique(map: "unique_email")
+  auth  auth?
+  tutor tutor?
+
+  @@id([email, sid])
+}
+
+model tutor {
+  major   String?
+  courses Json?   @db.Json
+  sid     Int     @unique(map: "sid")
+  student student @relation(fields: [sid], references: [sid], onDelete: NoAction, onUpdate: NoAction, map: "fk_sid")
+}
