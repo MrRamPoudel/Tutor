@@ -30,12 +30,11 @@ export default NextAuth({
           throw new Error("Invalid password");
         }
 
-        console.log(user);
         return {
-          id: user.email,
           email: user.email,
           fname: user.student.fname,
           lname: user.student.lname,
+          id: user.student.sid,
         };
       },
     }),
@@ -65,9 +64,9 @@ export default NextAuth({
     async session({ session, token, user }) {
       // Send properties to the client, like an access_token and user id from a provider.
       session.accessToken = token.accessToken;
+      session.user.email = token.email;
       session.user.id = token.id;
       session.user.name = `${token.fname} ${token.lname}`;
-      
       return session;
     },
   },
