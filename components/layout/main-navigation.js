@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 
 function MainNavigation({ Component, pageProps }) {
     const [show, setShow] = useState(false);
@@ -9,6 +9,10 @@ function MainNavigation({ Component, pageProps }) {
     if (loading) {
       return <div>Loading...</div>;
     }
+
+    const handleSignOut = () => {
+      signOut();
+    };
 
     return (
         <div className="bg-gray-50 h-screen">
@@ -139,7 +143,7 @@ function MainNavigation({ Component, pageProps }) {
                   <p className="cursor-pointer text-base leading-4 text-white">{session.user.name}</p>
                   <p className="cursor-pointer text-xs leading-3 text-gray-200">{session.user.email}</p>
                 </div>
-                <button aria-label="visit" className=" focus:ring-2 focus:outline-none hover:bg-indigo-800 p-2.5 bg-indigo-600 rounded-full">
+                <button onClick={handleSignOut} aria-label="visit" className=" focus:ring-2 focus:outline-none hover:bg-indigo-800 p-2.5 bg-indigo-600 rounded-full">
                   <svg width={20} height={20} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4.16666 10H15.8333" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     <path d="M10.8333 15L15.8333 10" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

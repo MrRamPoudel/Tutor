@@ -1,11 +1,13 @@
-import Image from 'next/image'
+import withAuth from "../components/withAuth";
 import { Inter } from 'next/font/google'
 import Layout from '@/components/layout/layout'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+const IndexPage = () => {
   return (
     <Layout />
   )
 }
+
+export default withAuth(IndexPage);
