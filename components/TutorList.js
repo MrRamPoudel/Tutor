@@ -52,8 +52,16 @@ export default function TutorList() {
                         {tutor.student.fname} {tutor.student.lname} 
                         </td>
                         <td className="whitespace-nowrap px-4 py-2 text-gray-700">{tutor.student.email} </td>
-                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">{tutor.major} </td>
-                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">{tutor.courses} </td>
+                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                            {tutor.major.map((major) => (
+                                <p>{major}</p>
+                            ))}
+                        </td>
+                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                            {tutor.courses.map((course) => (
+                                <p>{course}</p>
+                            ))}
+                        </td>
                     </tr>
                 ))}
                 
