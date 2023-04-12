@@ -25,8 +25,19 @@ model student {
 }
 
 model tutor {
-  major   Json?   @db.Json
   courses Json?   @db.Json
   sid     Int     @unique(map: "sid")
+  major   Json?   @db.Json
   student student @relation(fields: [sid], references: [sid], onDelete: NoAction, onUpdate: NoAction, map: "fk_sid")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model temp {
+  fname    String?
+  lname    String?
+  sid      Int?
+  password String?
+  email    String?
+
+  @@ignore
 }
