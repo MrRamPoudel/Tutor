@@ -1,6 +1,7 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import useAuth from "@/components/auth/useAuth";
 
 export default function SignIn() {
   const { data: session, status } = useSession();
@@ -8,6 +9,8 @@ export default function SignIn() {
   const [sidebar, setsidebar] = useState();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  useAuth("/")
 
   if (loading) {
     return <div>Loading...</div>;

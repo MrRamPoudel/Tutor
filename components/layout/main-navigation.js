@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useSession, signOut } from "next-auth/react";
+import withAuth from "../auth/withAuth";
 
-function MainNavigation({ Component, pageProps }) {
+const MainNavigation = () => {
     const [show, setShow] = useState(false);
     const { data: session, status } = useSession();
     const loading = status === "loading";
@@ -157,4 +158,4 @@ function MainNavigation({ Component, pageProps }) {
     );
 }
 
-export default MainNavigation;
+export default withAuth(MainNavigation);
