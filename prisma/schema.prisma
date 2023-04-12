@@ -25,7 +25,7 @@ model student {
 }
 
 model tutor {
-  major   String?
+  major   Json?   @db.Json
   courses Json?   @db.Json
   sid     Int     @unique(map: "sid")
   student student @relation(fields: [sid], references: [sid], onDelete: NoAction, onUpdate: NoAction, map: "fk_sid")
