@@ -15,28 +15,23 @@ export default function TutorList() {
       }, []);
 
     return (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto bg-gray-100">
             {tutors.length > 0 ? (
-            <table className="min-w-full divide-y-2 divide-gray-200 text-sm">
+            <table className="min-w-full divide-y-2 divide-gray-200 text-sm text-justify">
                 <thead>
                 <tr>
                     <th
-                    className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
+                    className="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
                     >
-                    Name
+                    Tutor
                     </th>
                     <th
-                    className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
-                    >
-                    Email
-                    </th>
-                    <th
-                    className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
+                    className="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
                     >
                     Major
                     </th>
                     <th
-                    className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
+                    className="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
                     >
                     Course
                     </th>
@@ -46,42 +41,27 @@ export default function TutorList() {
 
                 <tbody className="divide-y divide-gray-200">
 
-                {tutors.map((tutor) => (
-                    <tr key={tutor.sid}>
-                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        {tutor.student.fname} {tutor.student.lname} 
-                        </td>
-                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">{tutor.student.email} </td>
-                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                            {tutor.major.map((major) => (
-                                <p>{major}</p>
-                            ))}
-                        </td>
-                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                            {tutor.courses.map((course) => (
-                                <p>{course}</p>
-                            ))}
-                        </td>
-                    </tr>
-                ))}
-                
-                <tr>
-                    <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                    John Doe
-                    </td>
-                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">24/05/1995</td>
-                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">Web Developer</td>
-                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">$120,000</td>
-                    <td className="whitespace-nowrap px-4 py-2">
-                    <a
-                        href="#"
-                        className="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
-                    >
-                        View
-                    </a>
-                    </td>
-                </tr>
-
+                    {tutors.map((tutor) => (
+                        <tr key={tutor.sid}>
+                            <td className="whitespace-nowrap px-4 py-2">
+                                <p className='text-gray-700'>{tutor.student.fname} {tutor.student.lname}</p>
+                                <p className='text-gray-400 text-xs'>{tutor.student.email}</p>
+                            </td>
+                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                                {tutor.major.map((major) => (
+                                    <p>{major}</p>
+                                ))}
+                            </td>
+                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                                {tutor.courses.map((course) => (
+                                    <p>{course}</p>
+                                ))}
+                            </td>
+                            <button className="mx-2 my-2 bg-white transition duration-150 ease-in-out hover:border-gray-700 hover:text-gray-600 rounded border border-gray-600 text-gray-500 px-6 py-2 text-xs">
+                                View
+                            </button>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
             ) : (
