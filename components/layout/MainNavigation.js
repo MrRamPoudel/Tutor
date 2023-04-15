@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSession, signOut } from "next-auth/react";
 import withAuth from "../auth/withAuth";
+import Link from 'next/link';
 
 const MainNavigation = (props) => {
       const [show, setShow] = useState(false);
@@ -26,6 +27,7 @@ const MainNavigation = (props) => {
                   <div className="flex flex-no-wrap">
                       {/* Sidebar starts */}
                       <div className="absolute lg:relative w-64 h-screen shadow bg-gray-100 hidden lg:block">
+                        <Link href={`/`}>
                           <div className="mt-5 w-full flex flex-col justify-center items-center px-8 text-slate-950">
                             <svg width={34} height={34} viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path
@@ -35,8 +37,10 @@ const MainNavigation = (props) => {
                             </svg>
                             <p className="mt-2 text-2xl leading-6 ">AcadConnect</p>
                           </div>
+                        </Link>
                           <ul aria-orientation="vertical" className=" py-6">
                               <li className="pl-6 cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-4 mb-4 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
+                              <Link href={`/`}>
                                   <div className="flex items-center">
                                       <div>
                                           <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-grid" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -49,6 +53,7 @@ const MainNavigation = (props) => {
                                       </div>
                                       <span className="ml-2">Tutor List</span>
                                   </div>
+                                </Link>
                               </li>
                               <li className="pl-6 cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-4 mb-4 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
                                   <div className="flex items-center">
