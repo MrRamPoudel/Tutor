@@ -36,7 +36,7 @@ const MainNavigation = (props) => {
                             <p className="mt-2 text-2xl leading-6 ">AcadConnect</p>
                           </div>
                           <ul aria-orientation="vertical" className=" py-6">
-                              <li className="pl-6 cursor-pointer text-white text-sm leading-3 tracking-normal pb-4 pt-5 text-indigo-700 focus:text-indigo-700 focus:outline-none">
+                              <li className="pl-6 cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-4 mb-4 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
                                   <div className="flex items-center">
                                       <div>
                                           <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-grid" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
