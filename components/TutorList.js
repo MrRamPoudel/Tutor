@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function TutorList() {
     const [tutors, setTutors] = useState([]);
+    const [show, setShow] = useState(null)
 
     useEffect(() => {
         async function fetchTutors() {
@@ -57,9 +59,11 @@ export default function TutorList() {
                                     <p>{course}</p>
                                 ))}
                             </td>
-                            <button className="mx-2 my-2 bg-white transition duration-150 ease-in-out hover:border-gray-700 hover:text-gray-600 rounded border border-gray-600 text-gray-500 px-6 py-2 text-xs">
-                                View
-                            </button>
+                            <Link href={`/tutor/${tutor.sid}`}>
+                                <button className="mx-2 my-2 bg-white transition duration-150 ease-in-out hover:border-gray-700 hover:text-gray-600 rounded border border-gray-600 text-gray-500 px-6 py-2 text-xs">
+                                    View
+                                </button>
+                            </Link>
                         </tr>
                     ))}
                 </tbody>
