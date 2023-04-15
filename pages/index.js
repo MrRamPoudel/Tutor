@@ -1,8 +1,11 @@
 import Layout from '@/components/layout/layout'
+import TutorList from '@/components/TutorList';
 
 const IndexPage = () => {
   return (
-    <Layout />
+    <Layout>
+      <TutorList />
+    </Layout>
   )
 }
 
