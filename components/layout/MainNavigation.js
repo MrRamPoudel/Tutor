@@ -274,7 +274,10 @@ const MainNavigation = (props) => {
                                                       <div className="w-2 h-2 rounded-full bg-green-400 border border-white absolute inset-0 mb-0 mr-0 m-auto" />
                                                   </div>
                                               </div>
-                                              <p className="text-gray-800 text-sm mx-3">{session.user.name}</p>
+                                              <div>
+                                                <p className="text-gray-800 text-sm mx-3">{session.user.name}</p>
+                                                <p className="text-gray-500 text-xs mx-3">{session.user.role}</p>
+                                              </div>
                                               <div className="cursor-pointer text-gray-600">
                                                   <svg aria-haspopup="true" xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-chevron-down" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                                       <path stroke="none" d="M0 0h24v24H0z" />

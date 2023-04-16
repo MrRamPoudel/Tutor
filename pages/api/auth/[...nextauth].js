@@ -30,11 +30,19 @@ export default NextAuth({
           throw new Error("Invalid password");
         }
 
+        // Check if the user is a tutor
+        const tutor = await prisma.tutor.findUnique({
+          where: { sid: user.student.sid },
+        });
+
+        const role = tutor ? "tutor" : "student";
+
         return {
           email: user.email,
           fname: user.student.fname,
           lname: user.student.lname,
           id: user.student.sid,
+          role: role,
         };
       },
     }),
@@ -58,6 +66,7 @@ export default NextAuth({
         token.email = user.email;
         token.fname = user.fname;
         token.lname = user.lname;
+        token.role = user.role;
       }
       return token;
     },
@@ -67,6 +76,7 @@ export default NextAuth({
       session.user.email = token.email;
       session.user.id = token.id;
       session.user.name = `${token.fname} ${token.lname}`;
+      session.user.role = token.role;
       return session;
     },
   },
