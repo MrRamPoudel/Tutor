@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import prisma from '../../libs/prisma';
 import Layout from '@/components/layout/layout'
+import Link from 'next/link';
 
 const TutorPage = ({ tutor }) => {
   const router = useRouter();
@@ -46,7 +47,9 @@ const TutorPage = ({ tutor }) => {
                 </ul>
             </div>
             <div className="mt-6 md:mt-0">
+            <Link href={`/chat/${tutor.sid}`}>
                 <button className="mr-3 bg-gray-200 dark:bg-gray-700 focus:outline-none transition duration-150 ease-in-out rounded hover:bg-gray-300 dark:hover:bg-gray-600 px-5 py-2 text-sm">Chat</button>
+            </Link>
                 <button className="mr-3 bg-gray-200 dark:bg-gray-700 focus:outline-none transition duration-150 ease-in-out rounded hover:bg-gray-300 dark:hover:bg-gray-600 px-5 py-2 text-sm">Back</button>
             </div>
         </div>

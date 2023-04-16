@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgresql://postgres:qazwsx123@localhost:5432/tutorsystemdb?schema=public"
+  url      = "postgresql://postgres:ramu@localhost:5432/tutorsystemdb?schema=public"
 }
 
 model auth {
