@@ -26,7 +26,7 @@ const MainNavigation = (props) => {
               <div className="w-full h-full bg-gray-200">
                   <div className="flex flex-no-wrap">
                       {/* Sidebar starts */}
-                      <div className="absolute lg:relative w-64 h-screen shadow bg-gray-100 hidden lg:block">
+                      <div className="fixed top-0 lg:relative w-64 min-h-screen shadow bg-gray-100 hidden lg:block">
                         <Link href={`/`}>
                           <div className="mt-5 w-full flex flex-col justify-center items-center px-8 text-slate-950">
                             <svg width={34} height={34} viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -208,7 +208,7 @@ const MainNavigation = (props) => {
                       {/* Sidebar ends */}
                       <div className="w-full">
                           {/* Navigation starts */}
-                          <nav className="h-16 flex items-center lg:items-stretch justify-end lg:justify-between bg-white shadow relative z-10">
+                          <nav className="h-16 sticky top-0 flex items-center lg:items-stretch justify-end lg:justify-between bg-white shadow relative z-10">
                               <div className="hidden lg:flex w-full pr-6">
                                   <div className="w-1/2 h-full hidden lg:flex items-center pl-6 pr-24">
                                       <div className="relative w-full">
@@ -298,8 +298,7 @@ const MainNavigation = (props) => {
                               </div>
                           </nav>
                           {/* Navigation ends */}
-                          {/* Remove class [ h-64 ] when adding a card block */}
-                          <div className="container mx-auto py-10 h-64 md:w-4/5 w-11/12 px-6">
+                          <div className="container mx-auto py-10 md:w-4/5 w-11/12 px-6">
                             {props.children}
                           </div>
                       </div>
