@@ -1,10 +1,10 @@
 import Layout from '@/components/layout/layout'
-import CringyQuoteGenerator from "@/components/ChatGPT";
+import ChatGPT from "@/components/chatGPT/ChatBox";
 
 const ChatGPTPage= () => {
   return (
     <Layout>
-      <CringyQuoteGenerator />
+      <ChatGPT />
     </Layout>
   );
 };
