@@ -1,3 +1,4 @@
+//Legacy
 import React , {useState, useEffect} from "react";
 import Tutor from "./layout/tutor";
 export default function ChatBox({socket, name, roomID}) {
@@ -32,7 +33,8 @@ export default function ChatBox({socket, name, roomID}) {
     }, [socket]);
 
 
-    return (<div className="flex h-screen bg-gray-200">
+    return (
+    <div className="flex h-screen bg-gray-200">
       <div className="flex-1 bg-gray-200"></div>
       <div className="flex flex-col justify-center  w-full md:w-1/4 lg:w-1/2 bg-white rounded-lg shadow-lg">
         <div className="bg-slate-400 h-16 flex items-center justify-left rounded-t-lg w-full">

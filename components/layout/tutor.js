@@ -1,3 +1,4 @@
+//Legacy
 import React from "react";
 
 export default function Tutor({fname, tutorName}){

@@ -3,6 +3,8 @@ import { useContext } from "react";
 import { useSession } from "next-auth/react";
 import SocketContext from "@/contexts/SocketContext";
 import ChatBox from "@/components/Chatbox";
+import ChatRoom from "@/components/ChatRoom";
+import Layout from "@/components/layout/layout";
 
 
 export default function Room(){
@@ -17,7 +19,9 @@ export default function Room(){
         if (name !== ""){
             socket.emit("roomID", id);
         return (
-        <ChatBox socket = {socket} name = {name} roomID = {id} />
+            <Layout>
+                <ChatRoom socket = {socket} name = {name} roomID = {id} />
+            </Layout>
         );
         }
 

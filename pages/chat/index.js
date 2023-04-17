@@ -1,3 +1,4 @@
+//Legacy
 import React,{useState} from "react";
 import Tutor from "@/components/layout/tutor";
 
