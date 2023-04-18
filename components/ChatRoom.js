@@ -56,7 +56,6 @@ export default function ChatRoom({socket, name, roomID}){
                     />
                 </div>
                 <div className="w-full">
-                    <div className="text-lg font-semibold">MERN Stack</div>
                     <span className="text-gray-500">
                         {allMessages.length > 0 ? (
                             <>
@@ -82,17 +81,20 @@ export default function ChatRoom({socket, name, roomID}){
             <div className="w-full px-5 flex flex-col justify-between">
                 <div className="flex flex-col mt-5">
                         {allMessages.map(eachMessage => (
-                        <div className={` flex mb-4 ${
+                        <div className={` flex mb-4 items-end ${
                             eachMessage.name === name
                                 ? "justify-end"
                                 : "justify-start"
                             }`}>
-                        <div className={` text-white py-3 px-4 ${
-                            eachMessage.name === name
-                                ? "mr-2 bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl"
-                                : "ml-2 bg-gray-400 rounded-br-3xl rounded-tr-3xl rounded-tl-xl"
-                            }`}>{eachMessage.message}
-                        </div>
+                            <span className="text-gray-500">
+                            {eachMessage.name !== name ? (<>{eachMessage.name}:</>) : ('')}
+                            </span>
+                            <div className={` break-words text-white py-3 px-4 max-w-[50%] ${
+                                eachMessage.name === name
+                                    ? "mr-2 bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl"
+                                    : "ml-2 bg-gray-400 rounded-br-3xl rounded-tr-3xl rounded-tl-xl"
+                                }`}>{eachMessage.message}
+                            </div>
                         </div>
                         ))}
                 </div>
