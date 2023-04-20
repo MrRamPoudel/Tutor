@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import { useContext } from "react";
 import { useSession } from "next-auth/react";
 import SocketContext from "@/contexts/SocketContext";
-import ChatBox from "@/components/Chatbox";
 import ChatRoom from "@/components/ChatRoom";
 import Layout from "@/components/layout/layout";
 
