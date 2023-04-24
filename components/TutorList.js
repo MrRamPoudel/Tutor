@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import SocketContext from "@/contexts/SocketContext";
 import Link from 'next/link';
 
 export default function TutorList() {
@@ -6,12 +7,26 @@ export default function TutorList() {
     const [show, setShow] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(10);
+    const socket = useContext(SocketContext);
+    
+    const [tutorStatus, setTutorStatus] = useState({});
+
+    useEffect(() => {
+        // Listen for tutorStatusUpdate event
+        socket.on('tutorStatusUpdate', (data) => {
+            console.log('Received tutorStatusUpdate event:', data);
+            setTutorStatus((prevStatus) => ({ ...prevStatus, [data.tutorId]: data.isOnline }));
+        });
+
+        return () => {
+            socket.off('tutorStatusUpdate');
+        };
+    }, [socket]);
 
     useEffect(() => {
         async function fetchTutors() {
           const response = await fetch('/api/tutorList');
           const data = await response.json();
-          console.log('API Response:', data); // Add this line to check the response
           setTutors(data);
         }
       
@@ -68,7 +83,9 @@ export default function TutorList() {
                                     ))}
                                 </td>
                                 <td className="pl-20">
-                                    <p className="font-medium">Offline</p>
+                                    <p className={`font-medium ${tutorStatus[tutor.sid] ? 'text-green-500' : 'text-red-700'}`}>
+                                        {tutorStatus[tutor.sid] ? 'Online' : 'Offline'}
+                                    </p>
                                 </td>
                                 <td className="px-7 2xl:px-0">
                                     <Link href={`/tutor/${tutor.sid}`}>

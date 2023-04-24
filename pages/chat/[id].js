@@ -16,7 +16,7 @@ export default function Room(){
         //join the user to the room
         const name = session.user.name;
         if (name !== ""){
-            socket.emit("roomID", id);
+            socket.emit("roomID", { tutorId: id, studentId: session.user.id });
         return (
             <Layout>
                 <ChatRoom socket = {socket} name = {name} roomID = {id} />
