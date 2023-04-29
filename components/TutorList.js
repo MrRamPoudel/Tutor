@@ -8,7 +8,7 @@ export default function TutorList() {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(10);
     const socket = useContext(SocketContext);
-    
+    const [searchKeyword, setSearchKeyword] = useState("");
     const [tutorStatus, setTutorStatus] = useState({});
 
     useEffect(() => {
@@ -45,13 +45,38 @@ export default function TutorList() {
         scrollToTop();
     }
 
+    const filteredTutors = tutors.filter((tutor) => {
+        return (
+          tutor.student.fname.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+          tutor.student.lname.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+          tutor.major.some((major) => major.toLowerCase().includes(searchKeyword.toLowerCase()))
+        );
+    });
+      
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = tutors.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = filteredTutors.slice(indexOfFirstItem, indexOfLastItem);
 
     return (
         <div className="w-full sm:px-6">
             <div className="bg-white shadow px-4 md:px-10 pt-4 md:pt-7 pb-5 overflow-y-auto">
+            <div className="flex justify-center mb-4 w-full px-6">
+                <div className="text-gray-500 absolute ml-4 inset-0 m-auto w-4 h-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-search" width={16} height={16} viewBox="0 0 24 24" strokeWidth={1} stroke="#A0AEC0" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <circle cx={10} cy={10} r={7} />
+                        <line x1={21} y1={21} x2={15} y2={15} />
+                    </svg>
+                </div>
+                <input
+                    className="bg-gray-200 focus:outline-none rounded w-full text-sm text-gray-500  pl-10 py-2"
+                    type="search"
+                    name="search"
+                    placeholder="Search by tutor name or major"
+                    value={searchKeyword}
+                    onChange={(e) => setSearchKeyword(e.target.value)}
+                />
+            </div>
                 <table className="w-full whitespace-nowrap">
                     <thead>
                         <tr className="h-16 w-full text-sm leading-none text-gray-800">
